@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+    <title>Lista de Chamada</title>
+</head>
+<body>
+    <header class="school-header">
+        <div class="header-left">
+            <h1>Escola Técnica Estadual</h1>
+            <p>Lista de Chamada - Desenvolvimento de Sistemas</p>
+        </div>
+
+        <div class="header-right">
+            <p><strong>Data:</strong> 31/03/2026</p>
+            <p><strong>Turma:</strong> 2º DS</p>
+        </div>
+    </header>
+
+    <h1>LISTA DE CHAMADA</h1>
+
+    <form action="/add" method="post">
+        <input type="text" name="nome">
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th class="nc">NOME COMPLETO</th>
+                <th class="status">STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chave, valor in context.items() %}
+            <tr>
+                <td class="id">{{ chave }}</td>
+                <td>{{ valor }}</td>
+                <td>
+                    <label class="checkbox-container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
